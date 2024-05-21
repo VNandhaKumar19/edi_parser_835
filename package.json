@@ -1,0 +1,20 @@
+{
+  "name": "edi_parser_835",
+  "version": "1.0.13",
+  "description": "",
+  "main": "dist/main.js",
+  "prepublish": "tsc",
+  "scripts": {
+    "start": "nodemon --exec ts-node src/main.ts",
+    "build": "npx tsc"
+  },
+  "author": "Nandhakumar",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "typescript": "^5.4.5"
+  }
+}
