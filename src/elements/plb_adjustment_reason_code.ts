@@ -2,7 +2,7 @@ import { stringObject } from "../utilities/model";
 import { splitElement } from "../utilities/split_element";
 import { Code } from "./init";
 
-const plb_adjustment_codes: stringObject = {
+const plb_adjustment_codes: stringObject<string> = {
     "AH": "Claim Transmission Fee Amount",
     "B2": "Rebate Amount",
     "BD": "Bad Debt Amount",

@@ -1,6 +1,6 @@
 import { stringObject } from "../utilities/model";
 
-const organizations: stringObject = {
+const organizations: stringObject<string> = {
     'AV09311993': 'Availity',
     'ZIRMED': 'Zirmed'
 };

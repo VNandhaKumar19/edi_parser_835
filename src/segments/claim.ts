@@ -1,4 +1,5 @@
 import { Status, lookupStatus } from "../elements/claim_status";
+import { lookupFilingIndicator } from "../elements/filing_indicator_code";
 import { splitSegment } from "../utilities/split_segment";
 
 export class ClaimSegment {
@@ -10,7 +11,7 @@ export class ClaimSegment {
     public chargeAmount: number | null = null;
     public paidAmount: number | null = null;
     public patientResponsibility: string = '';
-    public filingIndicatorCode: string = '';
+    public filingIndicatorCode: { code: string, value: string } | null = null;
     public payerControlNumber: string = '';
     public facilityTypeCode: string = '';
     public claimFrequencyTypeCode: string = '';
@@ -26,7 +27,7 @@ export class ClaimSegment {
         this.chargeAmount = parseFloat(parsedSegment[3]?.trim());
         this.paidAmount = parseFloat(parsedSegment[4]?.trim());
         this.patientResponsibility = parsedSegment[5]?.trim();
-        this.filingIndicatorCode = parsedSegment[6]?.trim();
+        this.filingIndicatorCode = lookupFilingIndicator(parsedSegment[6]?.trim());
         this.payerControlNumber = parsedSegment[7]?.trim();
         this.facilityTypeCode = parsedSegment[8]?.trim();
         this.claimFrequencyTypeCode = parsedSegment[9]?.trim();

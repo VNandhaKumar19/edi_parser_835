@@ -1,6 +1,6 @@
 import { stringObject } from "../utilities/model";
 
-const dateQualifiers: stringObject = {
+const dateQualifiers: stringObject<string> = {
     '050': 'received',
     '150': 'service period start',
     '151': 'service period end',

@@ -1,6 +1,6 @@
 import { stringObject } from "../utilities/model";
 
-const identificationCodeQualifiers: stringObject = {
+const identificationCodeQualifiers: stringObject<string> = {
     'MI': 'member identification number',
     'C': "insured's changed unique identification number",
     'PC': 'provider commercial number',

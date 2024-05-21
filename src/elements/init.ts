@@ -3,15 +3,15 @@ import { stringObject } from "../utilities/model";
 export abstract class Elements {
     private private_name: string = '';
 
-    __set_name__(owner: stringObject, name: string): void {
+    __set_name__(owner: stringObject<string>, name: string): void {
         this.private_name = '_' + name;
     }
 
-    __get__(obj: stringObject): stringObject {
+    __get__(obj: stringObject<any>): stringObject<any> {
         return obj[this.private_name];
     }
 
-    __set__(obj: stringObject, value: string): void {
+    __set__(obj: stringObject<any>, value: string): void {
         value = this.parser(value);
         obj[this.private_name] = value;
     }

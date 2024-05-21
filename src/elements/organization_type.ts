@@ -1,6 +1,6 @@
 import { stringObject } from "../utilities/model";
 
-const organizationTypes: stringObject = {
+const organizationTypes: stringObject<string> = {
     'PE': 'payee',
     'PR': 'payer',
 };

@@ -1,6 +1,6 @@
 import { stringObject } from "../utilities/model";
 
-const paymentMethods: stringObject = {
+const paymentMethods: stringObject<string> = {
     'ACH': 'automatic deposit',
     'CHK': 'check',
     'NON': 'no payment'

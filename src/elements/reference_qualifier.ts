@@ -1,7 +1,7 @@
 import { stringObject } from "../utilities/model";
 import { Code } from "./init";
 
-const referenceQualifiers: stringObject = {
+const referenceQualifiers: stringObject<string> = {
     '6R': 'provider control number',
     '0K': 'policy form identifying number',
     'PQ': 'payee identification',

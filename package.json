@@ -1,6 +1,6 @@
 {
   "name": "edi_parser_835",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "",
   "main": "dist/main.js",
   "prepublish": "tsc",

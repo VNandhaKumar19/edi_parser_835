@@ -1,7 +1,7 @@
 import { stringObject } from "../utilities/model";
 import { Code } from "./init";
 
-const remarkCodes: stringObject = {
+const remarkCodes: stringObject<string> = {
     'N630': 'Referral not authorized by attending physician.',
     'N650': 'This policy was not in effect for this date of loss. No coverage is available.',
     'M53': 'Missing/incomplete/invalid days or units of service.',

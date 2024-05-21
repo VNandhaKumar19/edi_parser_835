@@ -1,6 +1,6 @@
 import { stringObject } from "../utilities/model";
 
-const entityCodes: stringObject = {
+const entityCodes: stringObject<string> = {
     'QC': 'patient',
     '74': 'insured',
     '82': 'rendering provider',

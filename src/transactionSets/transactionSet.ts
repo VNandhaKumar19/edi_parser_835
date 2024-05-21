@@ -134,7 +134,7 @@ export class TransactionSet {
         payer: OrganizationLoop,
         claim: ClaimLoop,
         service: ServiceLoop
-    ): stringObject {
+    ): stringObject<any> {
         let startDate = null;
         if (service?.servicePeriodStart) {
             startDate = service?.servicePeriodStart?.date;

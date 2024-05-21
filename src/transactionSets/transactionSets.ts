@@ -20,7 +20,7 @@ export class TransactionSets implements Iterable<TransactionSet> {
         return this.transactionSets?.map(transactionSet => transactionSet?.toString())?.join("\n");
     }
 
-    static sortColumns(data: stringObject): stringObject {
+    static sortColumns(data: stringObject<any>): stringObject<any> {
         const substrings = ['adj', 'ref', 'rem'];
         let variableColumns = data?.columns?.filter((c: string | string[]) => substrings?.some(substring => c?.includes(substring)));
         variableColumns = variableColumns?.sort();

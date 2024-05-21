@@ -1,7 +1,7 @@
 import { stringObject } from "../utilities/model";
 import { Code } from "./init"
 
-const adjustment_reason_codes: stringObject = {
+const adjustment_reason_codes: stringObject<string> = {
     '45': 'Charge exceeds fee schedule maximum allowable or contracted/legislated fee arrangement.',
     '243': 'Services not authorized by network/primary care providers.',
     '29': 'The time limit for filing has expired.',

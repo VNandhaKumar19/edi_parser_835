@@ -1,6 +1,6 @@
 import { stringObject } from "../utilities/model"
 
-const amount_qualifiers: stringObject = {
+const amount_qualifiers: stringObject<string> = {
     'B6': 'allowed - actual',
     'AU': 'coverage amount'
 }

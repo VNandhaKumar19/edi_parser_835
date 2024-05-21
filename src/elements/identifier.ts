@@ -5,7 +5,7 @@ export class Identifier extends Elements {
     private _value: string | null = null;
     privateName: string = '';
 
-    public set(obj: stringObject, value: string): void {
+    public set(obj: stringObject<string>, value: string): void {
         if (obj.identification !== value) {
             throw new Error('Class identifier does not match segment identifier.');
         }

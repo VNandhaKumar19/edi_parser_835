@@ -1,7 +1,7 @@
 import { stringObject } from "../utilities/model";
 import { Code } from "./init";
 
-const remarkQualifiers: stringObject = {
+const remarkQualifiers: stringObject<string> = {
     'HE': 'claim payment'
 };
 

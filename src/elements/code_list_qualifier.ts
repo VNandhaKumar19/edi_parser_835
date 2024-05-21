@@ -1,6 +1,6 @@
 import { stringObject } from "../utilities/model";
 
-const code_list_qualifier: stringObject = {
+const code_list_qualifier: stringObject<string> = {
     "0": "Document Identification Code",
     "1": "Free On Board Site Code",
     "2": "",
