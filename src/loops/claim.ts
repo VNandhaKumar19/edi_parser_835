@@ -104,9 +104,6 @@ export class ClaimLoop {
         let nextSegment: string | null = segments?.shift() ?? '';
         while (nextSegment) {
             try {
-                if(segments.length === 5) {
-                    console.log(segments)
-                }
                 const identifier = findIdentifier(nextSegment);
                 if (identifier === ServiceLoop.initiatingIdentifier) {
                     const [service, remainingSegments, currentSegment] = ServiceLoop.build(nextSegment, segments);
@@ -138,8 +135,6 @@ export class ClaimLoop {
                     claim.payerContactInformation = new PayerContactInformation(segment);
                 } else if (ClaimLoop.terminatingIdentifiers?.includes(identifier)) {
                     if (identifier === TransactionSetTrailer.identification) {
-                        console.log('TransactionSetTrailer.identification: ', TransactionSetTrailer.identification);
-                        console.log('identifier: ', identifier);
                         claim.transactionSetTrailer = new TransactionSetTrailer(nextSegment);
                     }
                     return [claim, segments, nextSegment];

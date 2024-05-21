@@ -29,7 +29,6 @@ export class InpatientAdjudicationInformation {
     public pps_capital_exception_amt: number | null = null;
 
     constructor(segment: string) {
-        console.log('segment: ', segment);
         const parsedSegment = splitSegment(segment);
         this.identifier = parsedSegment[0]?.trim();
         this.covered_days_or_visit_count = parseInt(parsedSegment[1]?.trim() ?? "");

@@ -103,7 +103,7 @@ export class TransactionSet {
             } else if (identifier === TransactionSet.initiatingIdentifier) {
                 return new BuildAttributeResponse(null, null, null, segments);
             } else {
-                console.log(`Identifier: ${identifier} not handled in transaction set and value is ${segment}`);
+                console.warn(`Identifier: ${identifier} not handled in transaction set and value is ${segment}`);
             }
         }
         return new BuildAttributeResponse("", null, null, segments);

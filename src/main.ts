@@ -37,7 +37,6 @@ export function _835_parser_from_file(filePath: string): TransactionSets {
                     console.warn(`Failed to build a transaction set from ${resolvedFilePath} with error: ${error}`);
                 }
             }
-            console.log('files: ', JSON.stringify(files));
         } else {
             if(filePath.endsWith('.txt') || filePath.endsWith('.835') || filePath.endsWith('.RMT')) {
                 const transactionSet = TransactionSet.buildFromFile(filePath);
