@@ -6,7 +6,7 @@ enum PayerClassification {
     UNKNOWN = "unknown"
 }
 
-interface Status {
+export interface Status {
     code: string;
     description: string;
     payer_classification: PayerClassification;
@@ -23,17 +23,11 @@ const Registry: Status[] = [
     { code: '22', description: 'reversal of previous payment', payer_classification: PayerClassification.UNSPECIFIED }
 ];
 
-function lookupStatus(code: string): Status {
+export function lookupStatus(code: string): Status {
     const status = Registry.find(s => s.code === code);
     if (!status) {
         console.warn(`ClaimStatus: Code ${code} does not match a status in the edi-835-parser claim status registry.`);
         return { code: 'code', description: 'uncategorized', payer_classification: PayerClassification.UNKNOWN };
     }
     return status;
-}
-
-export class ClaimStatus {
-    parser(value: string): Status {
-        return lookupStatus(value);
-    }
 }

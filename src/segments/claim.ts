@@ -1,3 +1,4 @@
+import { Status, lookupStatus } from "../elements/claim_status";
 import { splitSegment } from "../utilities/split_segment";
 
 export class ClaimSegment {
@@ -5,7 +6,7 @@ export class ClaimSegment {
 
     public identifier: string = '';
     public marker: string;
-    public status: string = '';
+    public status: Status | null = null;
     public chargeAmount: number | null = null;
     public paidAmount: number | null = null;
     public patientResponsibility: string = '';
@@ -21,7 +22,7 @@ export class ClaimSegment {
 
         this.identifier = parsedSegment[0]?.trim();
         this.marker = parsedSegment[1]?.trim();
-        this.status = parsedSegment[2]?.trim();
+        this.status = lookupStatus(parsedSegment[2]?.trim());
         this.chargeAmount = parseFloat(parsedSegment[3]?.trim());
         this.paidAmount = parseFloat(parsedSegment[4]?.trim());
         this.patientResponsibility = parsedSegment[5]?.trim();
