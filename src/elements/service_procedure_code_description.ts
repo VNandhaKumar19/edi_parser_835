@@ -1,8 +1,8 @@
 import { splitElement } from "../utilities/split_element";
 
-export function ServiceCodeParser(value: string): string {
+export function ServiceProcedureCodeDescriptionParser(value: string): string {
     if (!value) return '';
     const splitValue: string[] = splitElement(value);
-    const code: string = splitValue[1] || "";
+    const code: string = splitValue[6] || "";
     return code;
 }

@@ -153,7 +153,7 @@ export class TransactionSet {
             marker: claim?.claim?.marker,
             patient: claim?.patient?.name,
             code: service?.service?.code,
-            modifier: service?.service?.modifier,
+            modifier: service?.service?.modifier1,
             qualifier: service?.service?.qualifier,
             allowedUnits: service?.service?.allowedUnits,
             billedUnits: service?.service?.billedUnits,

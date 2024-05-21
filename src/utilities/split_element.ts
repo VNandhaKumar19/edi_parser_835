@@ -13,6 +13,7 @@ type Delimiter = {
  * string using the delimiter character that appears the most frequently in the `segment` string.
  */
 export function splitElement(segment: string): string[] {
+    if (!segment) return [];
     const delimiters: Delimiter[] = [
         { character: '^', count: 0 },
         { character: ':', count: 0 },
@@ -20,7 +21,7 @@ export function splitElement(segment: string): string[] {
         { character: '<', count: 0 }
     ];
 
-    for (let i = 0; i < segment.length; i++) {
+    for (let i = 0; i < segment?.length; i++) {
         for (const delimiter of delimiters) {
             if (segment[i] === delimiter.character) {
                 delimiter.count++;
@@ -29,5 +30,5 @@ export function splitElement(segment: string): string[] {
     }
 
     const maxDelimiter = delimiters.reduce((prev, current) => (prev.count > current.count) ? prev : current);
-    return segment.split(maxDelimiter.character);
+    return segment?.split(maxDelimiter?.character);
 }
