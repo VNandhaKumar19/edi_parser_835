@@ -30,7 +30,7 @@ export function _835_parser_from_file(filePath: string): TransactionSets {
                     delete transactionSet.nextSet;
                     transactionSets.push(transactionSet);
                     if (segments?.length) {
-                        const sets = createTransactionSetOnRemaining(segments);
+                        const sets = createTransactionSetOnRemaining(segments, filePath);
                         transactionSets.push(...sets);
                     }
                 } catch (error) {
@@ -44,7 +44,7 @@ export function _835_parser_from_file(filePath: string): TransactionSets {
                 delete transactionSet.nextSet;
                 transactionSets.push(transactionSet);
                 if (segments?.length) {
-                    const sets = createTransactionSetOnRemaining(segments);
+                    const sets = createTransactionSetOnRemaining(segments, filePath);
                     transactionSets.push(...sets);
                 }
             }
@@ -107,14 +107,14 @@ export function _835_parser(x12: string | string[]): TransactionSets {
  * @returns The `createTransactionSetOnRemaining` function returns an array of `TransactionSet`
  * objects.
  */
-function createTransactionSetOnRemaining(segments: string[]): TransactionSet[] {
+function createTransactionSetOnRemaining(segments: string[], fileName: string = ''): TransactionSet[] {
     const transactionSets: TransactionSet[] = []
     const transactionSet: TransactionSet = TransactionSet.build(segments)
     const segmentsArr = transactionSet.nextSet;
     delete transactionSet.nextSet;
     transactionSets.push(transactionSet)
     if (segmentsArr?.length) {
-        transactionSets.push(...createTransactionSetOnRemaining(segmentsArr));
+        transactionSets.push(...createTransactionSetOnRemaining(segmentsArr, fileName));
     }
     return transactionSets;
 }

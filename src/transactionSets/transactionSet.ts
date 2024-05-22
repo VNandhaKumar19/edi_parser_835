@@ -24,6 +24,7 @@ export class TransactionSet {
     groupSetTrailer: GroupSetTrailer | null = null;
     functionGroupHeader: FunctionGroupHeader | null = null;
     nextSet?: string[] = [];
+    fileName?: string = '';
 
     constructor(
         interchange: Interchange,
@@ -35,6 +36,7 @@ export class TransactionSet {
         reference: Reference | null,
         groupSetTrailer: GroupSetTrailer | null,
         functionGroupHeader: FunctionGroupHeader | null,
+        fileName: string,
         nextSet: string[]
     ) {
         this.interchange = interchange;
@@ -46,6 +48,7 @@ export class TransactionSet {
         this.reference = reference;
         this.groupSetTrailer = groupSetTrailer;
         this.functionGroupHeader = functionGroupHeader;
+        this.fileName = fileName;
         this.nextSet = nextSet.length ? nextSet : [];
     }
 
@@ -182,7 +185,7 @@ export class TransactionSet {
     static buildFromFile(filePath: string): TransactionSet {
         const file = readFileSync(filePath, 'utf-8');
         let segments = file?.split('~')?.map((segment: string) => segment?.trim());
-        return TransactionSet.build(segments, true)
+        return TransactionSet.build(segments, true, filePath)
     }
 
     /**
@@ -197,7 +200,7 @@ export class TransactionSet {
      * in the function.
      * @returns The `build` function returns a `TransactionSet` object.
      */
-    static build(segments: string[], bool: boolean = false): TransactionSet {
+    static build(segments: string[], bool: boolean = false, fileName: string = ''): TransactionSet {
         let interchange: Interchange | null = null;
         let financialInformation: FinancialInformation | null = null;
         const claims: ClaimLoop[] = [];
@@ -247,6 +250,7 @@ export class TransactionSet {
                     reference!,
                     groupSetTrailer!,
                     functionGroupHeader!,
+                    fileName,
                     segments
                 );
             } else if (response.key === null && bool) {
@@ -264,6 +268,7 @@ export class TransactionSet {
             reference!,
             groupSetTrailer!,
             functionGroupHeader!,
+            fileName,
             segments
         );
     }
