@@ -56,7 +56,7 @@ export class Service {
         this.medical_procedure_product_or_service_id = ServiceOrProductIdParser(parsedSegment[6]?.trim());
 
         // Assume unit count of one if unit not provided
-        const defaultUnits = this.paidAmount === 0 ? "0" : "1";
+        const defaultUnits = "1";
         this.allowedUnits = parseInt(getElement(parsedSegment, 5, defaultUnits) ?? "0");
         this.billedUnits = parseInt(getElement(parsedSegment, 7, this.allowedUnits.toString()) ?? "0");
     }
