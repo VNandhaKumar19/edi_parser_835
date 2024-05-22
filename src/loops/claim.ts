@@ -27,7 +27,7 @@ export class ClaimLoop {
     public codeListQualifier: CodeListQualifier | null = null;
     public inpatientAdjudicationInformation: InpatientAdjudicationInformation | null = null;
     public outpatientAdjudicationInformation: OutpatientAdjudicationInformation | null = null;
-    public payerContactInformation: PayerContactInformation | null = null;
+    public payerContactInformation: PayerContactInformation[] = [];
     transactionSetTrailer: TransactionSetTrailer | null = null;
 
     constructor(
@@ -41,7 +41,7 @@ export class ClaimLoop {
         codeListQualifier: CodeListQualifier | null = null,
         inpatientAdjudicationInformation: InpatientAdjudicationInformation | null = null,
         outpatientAdjudicationInformation: OutpatientAdjudicationInformation | null = null,
-        payerContactInformation: PayerContactInformation | null = null,
+        payerContactInformation: PayerContactInformation[] = [],
         transactionSetTrailer: TransactionSetTrailer | null = null,
 
     ) {
@@ -132,7 +132,7 @@ export class ClaimLoop {
                 } else if (identifier === OutpatientAdjudicationInformation.identification) {
                     claim.outpatientAdjudicationInformation = new OutpatientAdjudicationInformation(nextSegment);
                 } else if (identifier === PayerContactInformation.identification) {
-                    claim.payerContactInformation = new PayerContactInformation(segment);
+                    claim.payerContactInformation.push(new PayerContactInformation(segment));
                 } else if (ClaimLoop.terminatingIdentifiers?.includes(identifier)) {
                     if (identifier === TransactionSetTrailer.identification) {
                         claim.transactionSetTrailer = new TransactionSetTrailer(nextSegment);

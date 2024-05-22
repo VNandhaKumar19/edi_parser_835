@@ -9,13 +9,16 @@ export class PayerContactInformation {
         qualifier: string,
         communication: string,
     }[] = [];
+    contact_inquiry_reference: string = '';
 
     constructor(segment: string) {
         const parsedSegment = splitSegment(segment);
         this.identifier = parsedSegment.shift()?.trim() ?? '';
-        this.functionCode = parsedSegment.shift()?.trim() ?? ''; 
+        this.functionCode = parsedSegment.shift()?.trim() ?? '';
         this.contactName = parsedSegment.shift()?.trim() ?? '';
-        while(parsedSegment.length) {
+        if (parsedSegment.length === 7) this.contact_inquiry_reference = parsedSegment.pop()?.trim() ?? '';
+
+        while (parsedSegment.length) {
             const detail = {
                 qualifier: parsedSegment.shift()?.trim() ?? '',
                 communication: parsedSegment.shift()?.trim() ?? ''

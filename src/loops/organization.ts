@@ -21,14 +21,14 @@ export class OrganizationLoop {
     public address: Address | null = null;
     public reference: Reference | null = null;
     public providerSummaryInformation: ProviderSummaryInformation | null = null;
-    public payerContactInformation: PayerContactInformation | null = null;
+    public payerContactInformation: PayerContactInformation[] = [];
 
     constructor(
         organization: OrganizationSegment | null = null,
         location: LocationSegment | null = null,
         address: Address | null = null,
         providerSummaryInformation: ProviderSummaryInformation | null = null,
-        payerContactInformation: PayerContactInformation | null = null
+        payerContactInformation: PayerContactInformation[] = []
     ) {
         this.organization = organization;
         this.location = location;
@@ -70,7 +70,7 @@ export class OrganizationLoop {
             } else if (identifier === ProviderSummaryInformation.identification) {
                 organization.providerSummaryInformation = new ProviderSummaryInformation(segment);
             } else if (identifier === PayerContactInformation.identification) {
-                organization.payerContactInformation = new PayerContactInformation(segment);
+                organization.payerContactInformation.push(new PayerContactInformation(segment));
             } else {
                 const message = `Identifier: ${identifier} not handled in organization loop and segment value is ${segment}`;
                 console.warn(message);
