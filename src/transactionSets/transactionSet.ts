@@ -11,6 +11,7 @@ import { DateSegment } from "../segments/date";
 import { Reference } from "../segments/reference";
 import { GroupSetTrailer } from "../segments/group_set_trailer";
 import { FunctionGroupHeader } from "../segments/function_group_header";
+import { SetTransaction } from "../segments/setTransaction";
 
 export class TransactionSet {
     public static initiatingIdentifier: string = 'ST';
@@ -23,6 +24,7 @@ export class TransactionSet {
     reference: Reference | null = null;
     groupSetTrailer: GroupSetTrailer | null = null;
     functionGroupHeader: FunctionGroupHeader | null = null;
+    set_transaction: SetTransaction | null = null;
     nextSet?: string[] = [];
     fileName?: string = '';
 
@@ -36,6 +38,7 @@ export class TransactionSet {
         reference: Reference | null,
         groupSetTrailer: GroupSetTrailer | null,
         functionGroupHeader: FunctionGroupHeader | null,
+        set_transaction: SetTransaction | null,
         fileName: string,
         nextSet: string[]
     ) {
@@ -48,6 +51,7 @@ export class TransactionSet {
         this.reference = reference;
         this.groupSetTrailer = groupSetTrailer;
         this.functionGroupHeader = functionGroupHeader;
+        this.set_transaction = set_transaction;
         this.fileName = fileName;
         this.nextSet = nextSet.length ? nextSet : [];
     }
@@ -104,7 +108,8 @@ export class TransactionSet {
                 const functionGroupHeader = new FunctionGroupHeader(segment);
                 return new BuildAttributeResponse('functionGroupHeader', functionGroupHeader, null, segments);
             } else if (identifier === TransactionSet.initiatingIdentifier) {
-                return new BuildAttributeResponse(null, null, null, segments);
+                const setTransaction = new SetTransaction(segment)
+                return new BuildAttributeResponse('setTransaction', setTransaction, null, segments);
             } else {
                 console.warn(`Identifier: ${identifier} not handled in transaction set and value is ${segment}`);
             }
@@ -210,6 +215,7 @@ export class TransactionSet {
         let reference: Reference | null = null;
         let groupSetTrailer: GroupSetTrailer | null = null;
         let functionGroupHeader: FunctionGroupHeader | null = null;
+        let set_transaction: SetTransaction | null = null;
 
         let segment: string | null = null;
 
@@ -239,7 +245,8 @@ export class TransactionSet {
                 groupSetTrailer = response.value;
             } else if (response.key === 'functionGroupHeader') {
                 functionGroupHeader = response.value;
-            } else if (response.key === null && !bool) {
+            } else if (response.key === 'setTransaction' && !bool) {
+                set_transaction = response.value;
                 return new TransactionSet(
                     interchange!,
                     financialInformation!,
@@ -250,10 +257,12 @@ export class TransactionSet {
                     reference!,
                     groupSetTrailer!,
                     functionGroupHeader!,
+                    set_transaction!,
                     fileName,
                     segments
                 );
-            } else if (response.key === null && bool) {
+            } else if (response.key === 'setTransaction' && bool) {
+                set_transaction = response.value;
                 bool = false
             }
         }
@@ -268,6 +277,7 @@ export class TransactionSet {
             reference!,
             groupSetTrailer!,
             functionGroupHeader!,
+            set_transaction!,
             fileName,
             segments
         );
