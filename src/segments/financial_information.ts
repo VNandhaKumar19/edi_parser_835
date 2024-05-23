@@ -3,6 +3,7 @@ import { splitSegment } from "../utilities/split_segment";
 export class FinancialInformation {
     public static identification: string = 'BPR';
     identifier: string = '';
+    handlingCode: string = '';
     amountPaid: number = 0;
     creditOrDebitFlag: string = '';
     paymentMethod: string = '';
@@ -21,6 +22,7 @@ export class FinancialInformation {
     constructor(segment: string) {
         const parsedSegment = splitSegment(segment);
         this.identifier = parsedSegment[0]?.trim();
+        this.handlingCode = parsedSegment[1]?.trim();
         this.amountPaid = parseFloat(parsedSegment[2]?.trim());
         this.creditOrDebitFlag = parsedSegment[3]?.trim();
         this.paymentMethod = parsedSegment[4]?.trim();

@@ -7,7 +7,6 @@ export class InpatientAdjudicationInformation {
     public pps_operating_outlier_amount: number | null = null;
     public lifetime_psychiatric_days_count: number | null = null;
     public claim_DGR_amount: number | null = null;
-    public claim_payment_remark_code: string = '';
     public claim_disproportionate_share_amount: number | null = null;
     public claim_msp_pass_thru_amt: number | null = null;
     public claim_pps_capital_amount: number | null = null;
@@ -26,6 +25,7 @@ export class InpatientAdjudicationInformation {
     public claim_payment_remark_cd_2 : string = '';
     public claim_payment_remark_cd_3 : string = '';
     public claim_payment_remark_cd_4 : string = '';
+    public claim_payment_remark_cd_5 : string = '';
     public pps_capital_exception_amt: number | null = null;
 
     constructor(segment: string) {
@@ -35,7 +35,7 @@ export class InpatientAdjudicationInformation {
         this.pps_operating_outlier_amount = parseFloat(parsedSegment[2]?.trim() ?? "");
         this.lifetime_psychiatric_days_count = parseInt(parsedSegment[3]?.trim() ?? "");
         this.claim_DGR_amount = parseFloat(parsedSegment[4]?.trim() ?? "");
-        this.claim_payment_remark_code = parsedSegment[5]?.trim();
+        this.claim_payment_remark_cd_1 = parsedSegment[5]?.trim();
         this.claim_disproportionate_share_amount = parseFloat(parsedSegment[6]?.trim() ?? "");
         this.claim_msp_pass_thru_amt = parseFloat(parsedSegment[7]?.trim() ?? "");
         this.claim_pps_capital_amount = parseFloat(parsedSegment[8]?.trim() ?? "");
@@ -50,10 +50,10 @@ export class InpatientAdjudicationInformation {
         this.claim_pps_outlier_amount = parseFloat(parsedSegment[17]?.trim() ?? "");
         this.claim_indirect_teaching = parsedSegment[18]?.trim() ?? "";
         this.non_pay_prof_comp_amt = parseFloat(parsedSegment[19]?.trim() ?? "");
-        this.claim_payment_remark_cd_1 = parsedSegment[20]?.trim() ?? ""
-        this.claim_payment_remark_cd_2 = parsedSegment[21]?.trim() ?? "";
-        this.claim_payment_remark_cd_3 = parsedSegment[22]?.trim() ?? "";
-        this.claim_payment_remark_cd_4 = parsedSegment[23]?.trim() ?? "";
+        this.claim_payment_remark_cd_2 = parsedSegment[20]?.trim() ?? ""
+        this.claim_payment_remark_cd_3 = parsedSegment[21]?.trim() ?? "";
+        this.claim_payment_remark_cd_4 = parsedSegment[22]?.trim() ?? "";
+        this.claim_payment_remark_cd_5 = parsedSegment[23]?.trim() ?? "";
         this.pps_capital_exception_amt = parseFloat(parsedSegment[24]?.trim() ?? "");
     }
 

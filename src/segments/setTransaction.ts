@@ -12,7 +12,7 @@ export class SetTransaction {
         this.identifier = parsedSegment[0]?.trim() ?? '';
         this.identifierCode = parsedSegment[1]?.trim() ?? '';
         this.controlNumber = parsedSegment[2]?.trim() ?? '';
-        this.controlNumber = parsedSegment[3]?.trim() ?? '';
+        this.reference = parsedSegment[3]?.trim() ?? '';
         
     }
 
