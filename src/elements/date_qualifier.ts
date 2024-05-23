@@ -7,7 +7,8 @@ const dateQualifiers: stringObject<string> = {
     '472': 'service',
     '232': 'claim statement period start',
     '233': 'claim statement period end',
-    '405': 'Production Date'
+    '405': 'Production Date',
+    '036': 'Expiration Date'
 };
 
 export function dateQualifierParser(value: string): string {

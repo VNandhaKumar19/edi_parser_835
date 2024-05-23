@@ -109,7 +109,7 @@ export class TransactionSet {
                 return new BuildAttributeResponse('functionGroupHeader', functionGroupHeader, null, segments);
             } else if (identifier === TransactionSet.initiatingIdentifier) {
                 const setTransaction = new SetTransaction(segment)
-                return new BuildAttributeResponse('setTransaction', setTransaction, null, segments);
+                return new BuildAttributeResponse('setTransaction', setTransaction, segment, segments);
             } else {
                 console.warn(`Identifier: ${identifier} not handled in transaction set and value is ${segment}`);
             }
@@ -217,8 +217,8 @@ export class TransactionSet {
         let functionGroupHeader: FunctionGroupHeader | null = null;
         let set_transaction: SetTransaction | null = null;
 
+        
         let segment: string | null = null;
-
         while (true) {
             const response = TransactionSet.buildAttribute(segment, segments);
             segment = response?.segment;
@@ -246,7 +246,7 @@ export class TransactionSet {
             } else if (response.key === 'functionGroupHeader') {
                 functionGroupHeader = response.value;
             } else if (response.key === 'setTransaction' && !bool) {
-                set_transaction = response.value;
+                segments = [segment ?? '', ...segments]
                 return new TransactionSet(
                     interchange!,
                     financialInformation!,
@@ -262,6 +262,7 @@ export class TransactionSet {
                     segments
                 );
             } else if (response.key === 'setTransaction' && bool) {
+                segment = null;
                 set_transaction = response.value;
                 bool = false
             }
