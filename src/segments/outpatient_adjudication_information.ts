@@ -3,11 +3,11 @@ import { splitSegment } from "../utilities/split_segment";
 export class OutpatientAdjudicationInformation {
     public static identification: string = 'MOA';
     public identifier: string = '';
-    public reimbursementRate: number | null = null;
-    public claim_payable_amount: number | null = null
-    public claim_esrd_amount: number | null = null
+    public reimbursementRate: number = 0;
+    public claim_payable_amount: number = 0
+    public claim_esrd_amount: number = 0
     public remark_code: string[] = [];
-    public nonpayable_professional_comp_amt: number | null = null
+    public nonpayable_professional_comp_amt: number = 0
 
     constructor(segment: string) {
         const parsedSegment = splitSegment(segment);

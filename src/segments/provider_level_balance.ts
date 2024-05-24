@@ -9,7 +9,7 @@ export class ProviderLevelBalance {
     fiscal_period_date: string = '';
     plb_adjustment_code: Code = { code: "", description: "" };
     claim_reference_number: string = '';
-    amount: number | null = null;
+    amount: number = 0;
     constructor(segment: string) {
         const parsedSegment = splitSegment(segment);
         this.identifier = parsedSegment[0]?.trim();
@@ -17,6 +17,6 @@ export class ProviderLevelBalance {
         this.fiscal_period_date = parsedSegment[2]?.trim();
         this.plb_adjustment_code = PLBAdjustmentCodeParser(parsedSegment[3]?.trim());
         this.claim_reference_number = parsedSegment[4]?.trim();
-        this.amount = parseFloat(parsedSegment[5]?.trim()) ?? null;
+        this.amount = parseFloat(parsedSegment[5]?.trim()) ?? 0;
     }
 }

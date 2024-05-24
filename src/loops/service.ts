@@ -46,7 +46,7 @@ export class ServiceLoop {
         this.providerLevelBalance = providerLevelBalance;
     }
 
-    public get allowedAmount(): string | null {
+    public get allowedAmount(): number | null {
         if (this.amount && this.amount?.qualifier === 'allowed - actual') {
             return this.amount?.amount;
         }

@@ -5,7 +5,7 @@ export class Amount {
 
     public identifier: string;
     public qualifier: string;
-    public amount: string;
+    public amount: number = 0;
     public segment: string = '';
 
     constructor(segment: string) {
@@ -14,7 +14,7 @@ export class Amount {
 
         this.identifier = parsedSegment[0];
         this.qualifier = parsedSegment[1];
-        this.amount = parsedSegment[2];
+        this.amount = parseFloat(parsedSegment[2] ?? '');
     }
 
     public toString(): string {

@@ -8,8 +8,8 @@ export class ClaimSegment {
     public identifier: string = '';
     public marker: string;
     public status: Status | null = null;
-    public chargeAmount: number | null = null;
-    public paidAmount: number | null = null;
+    public chargeAmount: number = 0;
+    public paidAmount: number = 0;
     public patientResponsibility: string = '';
     public filingIndicatorCode: { code: string, value: string } | null = null;
     public payerControlNumber: string = '';
